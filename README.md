@@ -1,2 +1,2 @@
 # go-redis-prefix
-Redis for set key prefixes: github.com/redis/go-redis/v9
+go-redis-prefix is a hook library that sets the prefix for github.com/redis/go-redis/v9 key
