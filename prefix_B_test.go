@@ -2,11 +2,15 @@ package redisprefix
 
 import (
 	"testing"
+
+	"github.com/redis/go-redis/v9"
 )
 
 var (
 	bfKey = "BFKey"
 	bfEle = "bfItem"
+
+	bitKey = "BitKey"
 )
 
 func TestBFADD(t *testing.T) {
@@ -123,6 +127,56 @@ func TestBFScanDump(t *testing.T) {
 	argsSrt := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsSrt)
 	target := JoinInterfaceSliceBySpan("BF.SCANDUMP", prefixHook.formatKey(bfKey), 1, 2)
+	if argsSrt != target {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
+	}
+	t.Log("Success")
+}
+
+func TestBgRewriteAOF(t *testing.T) {
+	cmd := client.BgRewriteAOF(ctx)
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("bgrewriteaof")
+	if argsSrt != target {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
+	}
+	t.Log("Success")
+}
+
+func TestBgSave(t *testing.T) {
+	cmd := client.BgSave(ctx)
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("bgsave")
+	if argsSrt != target {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
+	}
+	t.Log("Success")
+}
+
+func TestBitCount(t *testing.T) {
+	cmd := client.BitCount(ctx, bitKey, &redis.BitCount{
+		Start: 1, End: 100,
+	})
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("bitcount", prefixHook.formatKey(bitKey), 1, 100)
+	if argsSrt != target {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
+	}
+	t.Log("Success")
+}
+
+func TestBitField(t *testing.T) {
+	cmd := client.BitField(ctx, bitKey, "INCRBY", "i5", 100, 1, "GET", "u4", 0)
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("bitfield", prefixHook.formatKey(bitKey), "INCRBY", "i5", 100, 1, "GET", "u4", 0)
 	if argsSrt != target {
 		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
