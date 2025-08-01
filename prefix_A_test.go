@@ -8,7 +8,7 @@ func TestACLCat(t *testing.T) {
 	aclCatCmd := client.ACLCat(ctx)
 	aclCatArgs := aclCatCmd.Args()
 	t.Log("ACLCat Args: ", aclCatArgs)
-	aclCatArgsSrt := JoinInterfaceSliceBySpan(aclCatArgs)
+	aclCatArgsSrt := JoinInterfaceSliceBySpan(aclCatArgs...)
 	if aclCatArgsSrt != "acl cat" {
 		t.Fatal("ACLCat waning!")
 	}
@@ -19,7 +19,7 @@ func TestACLDelUser(t *testing.T) {
 	ACLDelUserCmd := client.ACLDelUser(ctx, "haah")
 	ACLDelUserCmdArgs := ACLDelUserCmd.Args()
 	t.Log("ACLDelUserCmd Args: ", ACLDelUserCmdArgs)
-	aclCatArgsSrt := JoinInterfaceSliceBySpan(ACLDelUserCmdArgs)
+	aclCatArgsSrt := JoinInterfaceSliceBySpan(ACLDelUserCmdArgs...)
 	if aclCatArgsSrt != "acl deluser haah" {
 		t.Fatal("ACLDelUser waning!")
 	}
@@ -30,7 +30,7 @@ func TestACLDryRun(t *testing.T) {
 	cmd := client.ACLDryRun(ctx, "virginia", "set", "foo", "bar")
 	cmdArgs := cmd.Args()
 	t.Log("ACLDryRun Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs)
+	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
 	if cmdArgsSrt != "acl dryrun virginia set foo bar" {
 		t.Fatal("ACLDryRun waning!")
 	}
@@ -53,7 +53,7 @@ func TestACLLIST(t *testing.T) {
 	cmd := client.ACLList(ctx)
 	cmdArgs := cmd.Args()
 	t.Log("ACLDryRun Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs)
+	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
 	if cmdArgsSrt != "acl list" {
 		t.Fatal("ACL LIST waning!")
 	}
@@ -68,7 +68,7 @@ func TestACLLog(t *testing.T) {
 	cmd := client.ACLLog(ctx, 1)
 	cmdArgs := cmd.Args()
 	t.Log("ACLLog Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs)
+	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
 	if cmdArgsSrt != "acl log 1" {
 		t.Fatal("ACL Log waning!")
 	}
@@ -83,7 +83,7 @@ func TestACLSETUSER(t *testing.T) {
 	cmd := client.ACLSetUser(ctx, "guguda", "run")
 	cmdArgs := cmd.Args()
 	t.Log("ACLLog Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs)
+	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
 	if cmdArgsSrt != "acl setuser guguda run" {
 		t.Fatal("ACL SetUser waning!")
 	}
@@ -97,10 +97,11 @@ func TestACLWHOAMI(t *testing.T) {
 func TestAppend(t *testing.T) {
 	cmd := client.Append(ctx, "append", "append1")
 	cmdArgs := cmd.Args()
-	t.Log("Append Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs)
-	if cmdArgsSrt != JoinInterfaceSliceBySpan([]interface{}{"append", prefixHook.formatKey("append"), "append1"}) {
-		t.Fatal("Append waning!")
+	argsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("append", prefixHook.formatKey("append"), "append1")
+	if argsSrt != target {
+		t.Fatalf("Append waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }

@@ -167,6 +167,9 @@ func FilterPrefixNone() {
 	oldMap := commandPrefixType
 	commandPrefixType = make(map[string]PrefixType, len(oldMap))
 	for k, v := range oldMap {
+		if v == PrefixNone {
+			continue
+		}
 		commandPrefixType[k] = v
 	}
 }

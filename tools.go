@@ -11,8 +11,8 @@ import (
 	"time"
 )
 
-func JoinInterfaceSliceBySpan(slice []interface{}) string {
-	return JoinInterfaceSlice(slice, " ")
+func JoinInterfaceSliceBySpan(items ...interface{}) string {
+	return JoinInterfaceSlice(items, " ")
 }
 
 func JoinInterfaceSlice(slice []interface{}, sep string) string {
