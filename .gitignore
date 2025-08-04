@@ -2,3 +2,4 @@
 .idea
 .vscode
 .run
+tools/output/prefix_*_test.go

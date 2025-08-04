@@ -53,14 +53,14 @@ func (k *KeyPrefixHook) ProcessPipelineHook(next redis.ProcessPipelineHook) redi
 // nolint:typecheck
 func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 	fullName := strings.ToUpper(cmd.FullName())
-	prefixType, ok := commandPrefixType[fullName]
+	prefixType, ok := CommandPrefixType[fullName]
 	if prefixType == PrefixJoinNextArg {
 		if len(cmd.Args()) < 2 {
 			return
 		}
 		nextArg := cmd.Args()[1]
 		fullName = fmt.Sprintf("%s %s", fullName, strings.ToUpper(nextArg.(string)))
-		prefixType, ok = commandPrefixType[fullName]
+		prefixType, ok = CommandPrefixType[fullName]
 	}
 	if !ok || prefixType == PrefixNone {
 		return
@@ -104,10 +104,10 @@ func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 			return
 		}
 		cmd.Args()[1] = k.formatKey(cmd.Args()[1].(string))
-		cmd.Args()[1] = k.formatKey(cmd.Args()[2].(string))
-	case PrefixNumkeys:
+		cmd.Args()[2] = k.formatKey(cmd.Args()[2].(string))
+	case PrefixNumkeys, PrefixNumkeysSecond:
 		offset := 0
-		if fullName != cmd.Name() {
+		if prefixType == PrefixNumkeysSecond {
 			offset = 1
 		}
 		if len(cmd.Args()) < 3+offset {
@@ -141,7 +141,7 @@ func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 		for i := 0; i < numKeys; i++ {
 			cmd.Args()[streamsIdx+1+i] = k.formatKey(cmd.Args()[streamsIdx+1+i].(string))
 		}
-	case PrefixNumkeys2:
+	case PrefixNumkeysStore:
 		if len(cmd.Args()) < 4 {
 			return
 		}
@@ -164,12 +164,12 @@ func (k *KeyPrefixHook) formatKey(key string) string {
 
 // FilterPrefixNone filter Prefixnone clear the memory
 func FilterPrefixNone() {
-	oldMap := commandPrefixType
-	commandPrefixType = make(map[string]PrefixType, len(oldMap))
+	oldMap := CommandPrefixType
+	CommandPrefixType = make(map[string]PrefixType, len(oldMap))
 	for k, v := range oldMap {
 		if v == PrefixNone {
 			continue
 		}
-		commandPrefixType[k] = v
+		CommandPrefixType[k] = v
 	}
 }

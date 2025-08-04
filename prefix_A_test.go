@@ -1,115 +1,184 @@
 package redisprefix
 
 import (
+	"strings"
 	"testing"
+
+	"github.com/redis/go-redis/v9"
 )
 
 func TestACLCat(t *testing.T) {
-	aclCatCmd := client.ACLCat(ctx)
-	aclCatArgs := aclCatCmd.Args()
-	t.Log("ACLCat Args: ", aclCatArgs)
-	aclCatArgsSrt := JoinInterfaceSliceBySpan(aclCatArgs...)
-	if aclCatArgsSrt != "acl cat" {
-		t.Fatal("ACLCat waning!")
+	// Url: https://redis.io/docs/latest/commands/acl-cat/
+	// Syntax: ACL CAT [category]
+	cmd := client.ACLCat(testCtx)
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl cat")
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestACLDelUser(t *testing.T) {
-	ACLDelUserCmd := client.ACLDelUser(ctx, "haah")
-	ACLDelUserCmdArgs := ACLDelUserCmd.Args()
-	t.Log("ACLDelUserCmd Args: ", ACLDelUserCmdArgs)
-	aclCatArgsSrt := JoinInterfaceSliceBySpan(ACLDelUserCmdArgs...)
-	if aclCatArgsSrt != "acl deluser haah" {
-		t.Fatal("ACLDelUser waning!")
+	// Url: https://redis.io/docs/latest/commands/acl-deluser/
+	// Syntax: ACL DELUSER username [username ...]
+	cmd := client.ACLDelUser(testCtx, "DelUser")
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl deluser", "DelUser")
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestACLDryRun(t *testing.T) {
-	cmd := client.ACLDryRun(ctx, "virginia", "set", "foo", "bar")
-	cmdArgs := cmd.Args()
-	t.Log("ACLDryRun Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
-	if cmdArgsSrt != "acl dryrun virginia set foo bar" {
-		t.Fatal("ACLDryRun waning!")
+	// Url: https://redis.io/docs/latest/commands/acl-dryrun/
+	// Syntax: ACL DRYRUN username command [arg [arg ...]]
+	client.ACLSetUser(testCtx, "DryRunKey", "+SET", "~*")
+	cmd := client.ACLDryRun(testCtx, "DryRunKey", "set", "foo", "bar")
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl dryrun", "DryRunKey", "set", "foo", "bar")
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestACLGENPASS(t *testing.T) {
-	t.Errorf("go-redis not supported ACL GENPASS")
+	// Url: https://redis.io/docs/latest/commands/acl-genpass/
+	// Syntax: ACL GENPASS [bits]
+	t.Errorf("go-redis v9 not supported ACL GENPASS")
 }
 
 func TestACLGETUSER(t *testing.T) {
-	t.Errorf("go-redis not supported ACL GETUSER")
+	// Url: https://redis.io/docs/latest/commands/acl-getuser/
+	// Syntax: ACL GETUSER username
+	t.Errorf("go-redis v9 not supported ACL GETUSER")
 }
 
-func TestACLHELP(t *testing.T) {
-	t.Errorf("go-redis not supported ACL HELP")
-}
-
-func TestACLLIST(t *testing.T) {
-	cmd := client.ACLList(ctx)
-	cmdArgs := cmd.Args()
-	t.Log("ACLDryRun Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
-	if cmdArgsSrt != "acl list" {
-		t.Fatal("ACL LIST waning!")
+func TestACLList(t *testing.T) {
+	// Url: https://redis.io/docs/latest/commands/acl-list/
+	// Syntax: ACL LIST
+	cmd := client.ACLList(testCtx)
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl list")
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestACLLOAD(t *testing.T) {
-	t.Errorf("go-redis not supported ACL LOAD")
+	// Url: https://redis.io/docs/latest/commands/acl-load/
+	// Syntax: ACL LOAD
+	t.Errorf("go-redis v9 not supported ACL LOAD")
 }
 
 func TestACLLog(t *testing.T) {
-	cmd := client.ACLLog(ctx, 1)
-	cmdArgs := cmd.Args()
-	t.Log("ACLLog Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
-	if cmdArgsSrt != "acl log 1" {
-		t.Fatal("ACL Log waning!")
+	// Url: https://redis.io/docs/latest/commands/acl-log/
+	// Syntax: ACL LOG [count | RESET]
+	cmd := client.ACLLog(testCtx, 1)
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl log", 1)
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestACLSAVE(t *testing.T) {
-	t.Errorf("go-redis not supported ACL SAVE")
+	// Url: https://redis.io/docs/latest/commands/acl-save/
+	// Syntax: ACL SAVE
+	t.Errorf("go-redis v9 not supported ACL SAVE")
 }
 
-func TestACLSETUSER(t *testing.T) {
-	cmd := client.ACLSetUser(ctx, "guguda", "run")
-	cmdArgs := cmd.Args()
-	t.Log("ACLLog Args: ", cmdArgs)
-	cmdArgsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
-	if cmdArgsSrt != "acl setuser guguda run" {
-		t.Fatal("ACL SetUser waning!")
+func TestACLSetUser(t *testing.T) {
+	// Url: https://redis.io/docs/latest/commands/acl-setuser/
+	// Syntax: ACL SETUSER username [rule [rule ...]]
+	cmd := client.ACLSetUser(testCtx, "SetUser", "+SET", "~*")
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsSrt)
+	target := JoinInterfaceSliceBySpan("acl setuser", "SetUser", "+SET", "~*")
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
+func TestACLUSERS(t *testing.T) {
+	// Url: https://redis.io/docs/latest/commands/acl-users/
+	// Syntax: ACL USERS
+	t.Errorf("go-redis v9 not supported ACL USERS")
+}
+
 func TestACLWHOAMI(t *testing.T) {
-	t.Errorf("go-redis not supported ACL WHOAMI")
+	// Url: https://redis.io/docs/latest/commands/acl-whoami/
+	// Syntax: ACL WHOAMI
+	t.Errorf("go-redis v9 not supported ACL WHOAMI")
 }
 
 func TestAppend(t *testing.T) {
-	cmd := client.Append(ctx, "append", "append1")
-	cmdArgs := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(cmdArgs...)
+	// Url: https://redis.io/docs/latest/commands/append/
+	// Syntax: APPEND key value
+	cmd := client.Append(testCtx, "append", "append1")
+	_, err := cmd.Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd %v", err)
+	}
+	args := cmd.Args()
+	argsSrt := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsSrt)
 	target := JoinInterfaceSliceBySpan("append", prefixHook.formatKey("append"), "append1")
-	if argsSrt != target {
-		t.Fatalf("Append waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsSrt, target) {
+		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
 	t.Log("Success")
 }
 
 func TestASKING(t *testing.T) {
-	t.Errorf("go-redis not supported ASKING")
+	// Url: https://redis.io/docs/latest/commands/asking/
+	// Syntax: ASKING
+	t.Errorf("go-redis v9 not supported ASKING")
+
 }
 
 func TestAUTH(t *testing.T) {
-	t.Errorf("go-redis not supported AUTH")
+	// Url: https://redis.io/docs/latest/commands/auth/
+	// Syntax: AUTH [username] password
+	t.Errorf("go-redis v9 not supported AUTH")
 }

@@ -1,4 +1,4 @@
-package redisprefix
+package tools
 
 var (
 	testCommandPrefixType = map[string]commandData{
