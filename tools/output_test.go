@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	methodReplacer = strings.NewReplacer(".", "", " ", "", "-", "")
+	methodReplacer = strings.NewReplacer(".", "", " ", "", "-", "", "_", "")
 	version        = "v9"
 	tmplStr        = `
 
