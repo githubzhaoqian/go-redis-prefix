@@ -79,7 +79,6 @@ func TestDel(t *testing.T) {
 	t.Log("Success")
 }
 
-// TODO
 func TestDISCARD(t *testing.T) {
 	// Url: https://redis.io/docs/latest/commands/discard/
 	// Syntax: DISCARD
