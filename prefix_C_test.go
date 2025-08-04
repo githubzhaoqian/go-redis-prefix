@@ -798,7 +798,20 @@ func TestClusterReplicate(t *testing.T) {
 func TestCLUSTERRESET(t *testing.T) {
 	// Url: https://redis.io/docs/latest/commands/cluster-reset/
 	// Syntax: CLUSTER RESET [HARD | SOFT]
-	t.Errorf("go-redis v9 not supported CLUSTER RESET")
+	//cmd := client.ClusterResetHard(testCtx)
+	////_, err := cmd.Result()
+	////if err != nil && err != redis.Nil {
+	////	t.Fatalf("cmd %v", err)
+	////}
+	//args := cmd.Args()
+	//argsSrt := JoinInterfaceSliceBySpan(args...)
+	//t.Log("cmd: ", argsSrt)
+	//target := JoinInterfaceSliceBySpan("CLUSTER RESET", "HARD")
+	//if !strings.EqualFold(argsSrt, target) {
+	//	t.Fatalf("waning! %s != %s", argsSrt, target)
+	//}
+	//t.Log("Success")
+	t.Errorf("CLUSTER RESET test not enabled")
 }
 
 func TestClusterSaveConfig(t *testing.T) {
