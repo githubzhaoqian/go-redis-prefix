@@ -57,3 +57,7 @@ func TestJoinInterfaceSlice(t *testing.T) {
 func testFormatSec() int64 {
 	return formatSec(testTimeout)
 }
+
+func testFormatMs() int64 {
+	return formatMs(testTimeout)
+}

@@ -98,7 +98,7 @@ func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 		if len(cmd.Args()) < 3 {
 			return
 		}
-		cmd.Args()[1] = k.formatKey(cmd.Args()[2].(string))
+		cmd.Args()[2] = k.formatKey(cmd.Args()[2].(string))
 	case PrefixSecondAndThird:
 		if len(cmd.Args()) < 3 {
 			return

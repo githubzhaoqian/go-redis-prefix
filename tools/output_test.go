@@ -31,7 +31,7 @@ func Test{{.MethodName}}(t *testing.T) {
 	//args := cmd.Args()
 	//argsSrt := JoinInterfaceSliceBySpan(args...)
 	//t.Log("cmd: ", argsSrt)
-	//target := JoinInterfaceSliceBySpan("{{.Name}}" {{.JoinSignature}})
+	//target := JoinInterfaceSliceBySpan("{{.Name}}"{{.JoinSignature}})
 	//if !strings.EqualFold(argsSrt, target) {
 	//	t.Fatalf("waning! %s != %s", argsSrt, target)
 	//}
