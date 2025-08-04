@@ -130,7 +130,7 @@ func TestOutput(t *testing.T) {
 			Version       string
 			JoinSignature string
 			Url           string
-			Syntax        string
+			Syntax        template.HTML
 		}{
 			MethodName:    methodTitle,
 			Name:          name,
@@ -138,7 +138,7 @@ func TestOutput(t *testing.T) {
 			JoinSignature: joinSignature,
 			Version:       version,
 			Url:           cData.Url,
-			Syntax:        cData.Syntax,
+			Syntax:        template.HTML(cData.Syntax),
 		}
 		err = tmpl.Execute(&buf, data)
 		if err != nil {
