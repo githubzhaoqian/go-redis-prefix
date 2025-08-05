@@ -27,7 +27,7 @@ func JoinInterfaceSlice(slice []interface{}, sep string) string {
 		}
 		builder.WriteString(fmt.Sprintf("%v", v))
 	}
-	return builder.String()
+	return strings.TrimSpace(builder.String())
 }
 
 func formatMs(dur time.Duration) int64 {

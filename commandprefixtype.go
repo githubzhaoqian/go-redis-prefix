@@ -305,7 +305,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"MEMORY MALLOC-STATS":           PrefixNone,            // MEMORY MALLOC-STATS
 	"MEMORY PURGE":                  PrefixNone,            // MEMORY PURGE
 	"MEMORY STATS":                  PrefixNone,            // MEMORY STATS
-	"MEMORY USAGE":                  PrefixNone,            // MEMORY USAGE key [SAMPLES count]
+	"MEMORY USAGE":                  PrefixThird,           // MEMORY USAGE key [SAMPLES count]
 	"MGET":                          PrefixAll,             // MGET key [key ...]
 	"MIGRATE":                       PrefixNone,            // MIGRATE host port <key | ""> destination-db timeout [COPY] [REPLACE]  [AUTH password | AUTH2 username password] [KEYS key [key ...]]
 	"MODULE LIST":                   PrefixNone,            // MODULE LIST
