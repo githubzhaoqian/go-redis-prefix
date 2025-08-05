@@ -67,9 +67,12 @@ func TestWatch(t *testing.T) {
 			getArgs := getCmd.Args()
 			argsStr := JoinInterfaceSliceBySpan(getArgs...)
 			t.Log("tx get cmd: ", argsStr)
+			target := JoinInterfaceSliceBySpan("GET", prefixHook.formatKey(key))
+			if !strings.EqualFold(argsStr, target) {
+				t.Fatalf("waning! %s != %s", argsStr, target)
+			}
 			// 等待B修改
 			time.Sleep(3 * time.Second)
-
 			// 事务尝试加1
 			_, err := tx.TxPipelined(testCtx, func(pipe redis.Pipeliner) error {
 				pipe.Set(testCtx, key, val+1, 0)
@@ -92,5 +95,9 @@ func TestWatch(t *testing.T) {
 	setArgs := setCmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(setArgs...)
 	t.Log("set cmd: ", argsStr)
+	target := JoinInterfaceSliceBySpan("SET", prefixHook.formatKey(key), 100)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
+	}
 	<-done
 }
