@@ -358,7 +358,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"RPOP":                          PrefixSecond,          // RPOP key [count]
 	"RPOPLPUSH":                     PrefixSecondAndThird,  // RPOPLPUSH source destination
 	"RPUSH":                         PrefixSecond,          // RPUSH key element [element ...]
-	"RPUSHX":                        PrefixNone,            // RPUSHX key element [element ...]
+	"RPUSHX":                        PrefixSecond,          // RPUSHX key element [element ...]
 	"SADD":                          PrefixSecond,          // SADD key member [member ...]
 	"SAVE":                          PrefixNone,            // SAVE
 	"SCAN":                          PrefixNone,            // SCAN cursor [MATCH pattern] [COUNT count] [TYPE type]
