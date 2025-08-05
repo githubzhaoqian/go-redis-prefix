@@ -16,11 +16,11 @@ func TestLastSave(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LASTSAVE")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -77,11 +77,11 @@ func TestLCS(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LCS", prefixHook.formatKey("LCSKey1"), prefixHook.formatKey("LCSKey2"), "len")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -95,11 +95,11 @@ func TestLIndex(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LINDEX", prefixHook.formatKey("LIndexKey"), 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -113,11 +113,11 @@ func TestLInsert(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LINSERT", prefixHook.formatKey("LInsertKey"), "AFTER", "pivot", "element")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -131,11 +131,11 @@ func TestLLen(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LLEN", prefixHook.formatKey("LLenKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -149,11 +149,11 @@ func TestLMove(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LMOVE", prefixHook.formatKey("LMoveSource"), prefixHook.formatKey("LMoveDestination"), "RIGHT", "LEFT")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -167,11 +167,11 @@ func TestLMPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LMPOP", 2, prefixHook.formatKey("LMPopKey1"), prefixHook.formatKey("LMPopKey2"), "right", "count", 2)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -191,11 +191,11 @@ func TestLPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LPOP", prefixHook.formatKey("LPopKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -211,11 +211,11 @@ func TestLPos(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LPOS", prefixHook.formatKey("LPosKey"), "val", "rank", 1, "maxlen", 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -229,11 +229,11 @@ func TestLPush(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LPUSH", prefixHook.formatKey("LPushKey"), "element1", "element2")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -247,11 +247,11 @@ func TestLPushX(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LPUSHX", prefixHook.formatKey("LPushXKey"), "element1", "element2")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -265,11 +265,11 @@ func TestLRange(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LRANGE", prefixHook.formatKey("LRangeKey"), 1, 2)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -283,11 +283,11 @@ func TestLRem(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LREM", prefixHook.formatKey("LRemKey"), 1, "element")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -302,11 +302,11 @@ func TestLSet(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LSET", prefixHook.formatKey("LSetKey"), 1, "setElement")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -320,11 +320,11 @@ func TestLTrim(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("LTRIM", prefixHook.formatKey("LTrimKey"), 1, 2)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }

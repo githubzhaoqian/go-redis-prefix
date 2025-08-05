@@ -17,11 +17,11 @@ func TestEcho(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("ECHO", "message")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -35,11 +35,11 @@ func TestEval(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EVAL", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -57,11 +57,11 @@ func TestEvalSha(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EVALSHA", sha1, 1, "key", "hello")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -75,11 +75,11 @@ func TestEVALSHA_RO(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EVALSHA_RO", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -93,11 +93,11 @@ func TestEVAL_RO(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EVAL_RO", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -117,11 +117,11 @@ func TestExists(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EXISTS", prefixHook.formatKey("ExistsKey1"), prefixHook.formatKey("ExistsKey2"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -135,11 +135,11 @@ func TestExpire(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EXPIRE", prefixHook.formatKey("ExpireKey"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -154,11 +154,11 @@ func TestExpireAt(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EXPIREAT", prefixHook.formatKey("ExpireAtKey"), tn.Unix())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -172,11 +172,11 @@ func TestExpireTime(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("EXPIRETIME", prefixHook.formatKey("ExpireTimeKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }

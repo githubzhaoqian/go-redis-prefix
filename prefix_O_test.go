@@ -16,11 +16,11 @@ func TestObjectEncoding(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("OBJECT ENCODING", prefixHook.formatKey("ObjectEncodingKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -34,11 +34,11 @@ func TestObjectFreq(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("OBJECT FREQ", prefixHook.formatKey("ObjectFreqKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -52,11 +52,11 @@ func TestObjectIdleTime(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("OBJECT IDLETIME", prefixHook.formatKey("ObjectIdleTimeKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -70,11 +70,11 @@ func TestObjectRefCount(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("OBJECT REFCOUNT", prefixHook.formatKey("ObjectRefCountKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }

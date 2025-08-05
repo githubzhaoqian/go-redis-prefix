@@ -17,11 +17,11 @@ func TestWait(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("WAIT", 1, testFormatMs())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -35,11 +35,11 @@ func TestWaitAOF(t *testing.T) {
 	//	t.Fatalf("cmd %v", err)
 	//}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("WAITAOF", 1, 0, 0)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -65,8 +65,8 @@ func TestWatch(t *testing.T) {
 			getCmd := tx.Get(testCtx, key)
 			val, _ := getCmd.Int()
 			getArgs := getCmd.Args()
-			argsSrt := JoinInterfaceSliceBySpan(getArgs...)
-			t.Log("get cmd: ", argsSrt)
+			argsStr := JoinInterfaceSliceBySpan(getArgs...)
+			t.Log("tx get cmd: ", argsStr)
 			// 等待B修改
 			time.Sleep(3 * time.Second)
 
@@ -90,7 +90,7 @@ func TestWatch(t *testing.T) {
 	time.Sleep(1 * time.Second)
 	setCmd := clientB.Set(testCtx, key, 100, 0)
 	setArgs := setCmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(setArgs...)
-	t.Log("set cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(setArgs...)
+	t.Log("set cmd: ", argsStr)
 	<-done
 }

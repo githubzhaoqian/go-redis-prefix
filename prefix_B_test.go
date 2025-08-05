@@ -18,11 +18,11 @@ func TestBFAdd(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.add", prefixHook.formatKey("BFAddKey"), 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -36,11 +36,11 @@ func TestBFCard(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.card", prefixHook.formatKey("BFCardKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -54,11 +54,11 @@ func TestBFExists(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.exists", prefixHook.formatKey("BFExistsKey"), 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -73,11 +73,11 @@ func TestBFInfo(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.info", prefixHook.formatKey("BFInfoKey"))
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -91,11 +91,11 @@ func TestBFInsert(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.insert", prefixHook.formatKey("BFInsertKey"), "ITEMS", 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -115,11 +115,11 @@ func TestBFLoadChunk(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.loadchunk", prefixHook.formatKey(bFLoadChunkKey), 1, r.Data)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -133,11 +133,11 @@ func TestBFMAdd(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.madd", prefixHook.formatKey("BFMAddKey"), 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -151,11 +151,11 @@ func TestBFMExists(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bf.mexists", prefixHook.formatKey("BFMExistsKey"), 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -169,11 +169,11 @@ func TestBFReserve(t *testing.T) {
 	if err != nil && err != redis.Nil {
 		t.Fatalf("cmd %v, %v", err, args)
 	}
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("BF.RESERVE", prefixHook.formatKey("BFReserveKey1"), 0.01, 1, 100)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -188,11 +188,11 @@ func TestBFScanDump(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("BF.SCANDUMP", prefixHook.formatKey("BFScanDumpKey"), 0)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -206,11 +206,11 @@ func TestBgRewriteAOF(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bgrewriteaof")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -224,11 +224,11 @@ func TestBgSave(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bgsave")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -242,11 +242,11 @@ func TestBitCount(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bitcount", prefixHook.formatKey("BitCountKey"), 1, 2)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -260,11 +260,11 @@ func TestBitField(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bitfield", prefixHook.formatKey("BitFieldKey"), "SET", "i8", "#0", "100", "SET", "i8", "#1", "200")
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -290,11 +290,11 @@ func TestBitPos(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bitpos", prefixHook.formatKey("BitPos"), 0, 1)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -308,11 +308,11 @@ func TestBLMove(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("blmove", prefixHook.formatKey("BLMoveSource"), prefixHook.formatKey("BLMoveDestination"), "LEFT", "RIGHT", testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -326,11 +326,11 @@ func TestBLMPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("blmpop", 1, 2, prefixHook.formatKey("BLMPopKey1"), prefixHook.formatKey("BLMPopKey2"), "left", "count", testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -344,11 +344,11 @@ func TestBLPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("blpop", prefixHook.formatKey("BLPopKey1"), prefixHook.formatKey("BLPopKey2"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -362,11 +362,11 @@ func TestBRPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("brpop", prefixHook.formatKey("BRPopKey1"), prefixHook.formatKey("BRPopKey2"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -380,11 +380,11 @@ func TestBRPopLPush(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("brpoplpush", prefixHook.formatKey("BRPopLPushSource"), prefixHook.formatKey("BRPopLPushDestination"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -398,11 +398,11 @@ func TestBZMPop(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bzmpop", testFormatSec(), 2, prefixHook.formatKey("BZMPopKey1"), prefixHook.formatKey("BZMPopKey2"), "max", "count", 2)
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -416,11 +416,11 @@ func TestBZPopMax(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bzpopmax", prefixHook.formatKey("BZPopMax1"), prefixHook.formatKey("BZPopMax2"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }
@@ -434,11 +434,11 @@ func TestBZPopMin(t *testing.T) {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
-	argsSrt := JoinInterfaceSliceBySpan(args...)
-	t.Log("cmd: ", argsSrt)
+	argsStr := JoinInterfaceSliceBySpan(args...)
+	t.Log("cmd: ", argsStr)
 	target := JoinInterfaceSliceBySpan("bzpopmin", prefixHook.formatKey("BZPopMin1"), prefixHook.formatKey("BZPopMin2"), testFormatSec())
-	if !strings.EqualFold(argsSrt, target) {
-		t.Fatalf("waning! %s != %s", argsSrt, target)
+	if !strings.EqualFold(argsStr, target) {
+		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
 	t.Log("Success")
 }

@@ -29,11 +29,11 @@ func Test{{.MethodName}}(t *testing.T) {
 	//	t.Fatalf("cmd %v", err)
 	//}
 	//args := cmd.Args()
-	//argsSrt := JoinInterfaceSliceBySpan(args...)
-	//t.Log("cmd: ", argsSrt)
+	//argsStr := JoinInterfaceSliceBySpan(args...)
+	//t.Log("cmd: ", argsStr)
 	//target := JoinInterfaceSliceBySpan("{{.Name}}"{{.JoinSignature}})
-	//if !strings.EqualFold(argsSrt, target) {
-	//	t.Fatalf("waning! %s != %s", argsSrt, target)
+	//if !strings.EqualFold(argsStr, target) {
+	//	t.Fatalf("waning! %s != %s", argsStr, target)
 	//}
 	//t.Log("Success")
 	t.Errorf("TODO")
