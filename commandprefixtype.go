@@ -417,7 +417,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"TDIGEST.RANK":                  PrefixSecond,          // TDIGEST.RANK key value [value ...]
 	"TDIGEST.RESET":                 PrefixSecond,          // TDIGEST.RESET key
 	"TDIGEST.REVRANK":               PrefixSecond,          // TDIGEST.REVRANK key value [value ...]
-	"TDIGEST.TRIMMED_MEAN":          PrefixNone,            // TDIGEST.TRIMMED_MEAN key low_cut_quantile high_cut_quantile
+	"TDIGEST.TRIMMED_MEAN":          PrefixSecond,          // TDIGEST.TRIMMED_MEAN key low_cut_quantile high_cut_quantile
 	"TIME":                          PrefixNone,            // TIME
 	"TOPK.ADD":                      PrefixSecond,          // TOPK.ADD key items [items ...]
 	"TOPK.COUNT":                    PrefixSecond,          // TOPK.COUNT key item [item ...]
@@ -431,7 +431,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"TS.ALTER":                      PrefixSecond,          // TS.ALTER key   [RETENTION retentionPeriod]   [CHUNK_SIZE size]   [DUPLICATE_POLICY policy]   [IGNORE ignoreMaxTimediff ignoreMaxValDiff]   [LABELS [label value ...]]
 	"TS.CREATE":                     PrefixSecond,          // TS.CREATE key   [RETENTION retentionPeriod]   [ENCODING <COMPRESSED|UNCOMPRESSED>]   [CHUNK_SIZE size]   [DUPLICATE_POLICY policy]   [IGNORE ignoreMaxTimediff ignoreMaxValDiff]   [LABELS [label value ...]]
 	"TS.CREATERULE":                 PrefixSecondAndThird,  // TS.CREATERULE sourceKey destKey   AGGREGATION aggregator bucketDuration   [alignTimestamp]
-	"TS.DECRBY":                     PrefixNone,            // TS.DECRBY key subtrahend   [TIMESTAMP timestamp]   [RETENTION retentionPeriod]   [ENCODING <COMPRESSED|UNCOMPRESSED>]   [CHUNK_SIZE size]   [DUPLICATE_POLICY policy]   [IGNORE ignoreMaxTimediff ignoreMaxValDiff]    [LABELS [label value ...]]
+	"TS.DECRBY":                     PrefixSecond,          // TS.DECRBY key subtrahend   [TIMESTAMP timestamp]   [RETENTION retentionPeriod]   [ENCODING <COMPRESSED|UNCOMPRESSED>]   [CHUNK_SIZE size]   [DUPLICATE_POLICY policy]   [IGNORE ignoreMaxTimediff ignoreMaxValDiff]    [LABELS [label value ...]]
 	"TS.DEL":                        PrefixSecond,          // TS.DEL key fromTimestamp toTimestamp
 	"TS.DELETERULE":                 PrefixAll,             // TS.DELETERULE sourceKey destKey
 	"TS.GET":                        PrefixSecond,          // TS.GET key   [LATEST]
@@ -463,27 +463,27 @@ var CommandPrefixType = map[string]PrefixType{
 	"WAIT":                          PrefixNone,            // WAIT numreplicas timeout
 	"WAITAOF":                       PrefixNone,            // WAITAOF numlocal numreplicas timeout
 	"WATCH":                         PrefixAll,             // WATCH key [key ...]
-	"XACK":                          PrefixSecond,          // XACK key group id [id ...]
-	"XADD":                          PrefixSecond,          // XADD key [NOMKSTREAM] [<MAXLEN | MINID> [= | ~] threshold  [LIMIT count]] <* | id> field value [field value ...]
-	"XAUTOCLAIM":                    PrefixSecond,          // XAUTOCLAIM key group consumer min-idle-time start [COUNT count]  [JUSTID]
-	"XCLAIM":                        PrefixSecond,          // XCLAIM key group consumer min-idle-time id [id ...] [IDLE ms]  [TIME unix-time-milliseconds] [RETRYCOUNT count] [FORCE] [JUSTID]  [LASTID lastid]
-	"XDEL":                          PrefixSecond,          // XDEL key id [id ...]
-	"XGROUP CREATE":                 PrefixThird,           // XGROUP CREATE key group <id | $> [MKSTREAM]  [ENTRIESREAD entries-read]
-	"XGROUP CREATECONSUMER":         PrefixThird,           // XGROUP CREATECONSUMER key group consumer
-	"XGROUP DELCONSUMER":            PrefixThird,           // XGROUP DELCONSUMER key group consumer
-	"XGROUP DESTROY":                PrefixThird,           // XGROUP DESTROY key group
-	"XGROUP SETID":                  PrefixThird,           // XGROUP SETID key group <id | $> [ENTRIESREAD entries-read]
-	"XINFO CONSUMERS":               PrefixThird,           // XINFO CONSUMERS key group
-	"XINFO GROUPS":                  PrefixThird,           // XINFO GROUPS key
-	"XINFO STREAM":                  PrefixThird,           // XINFO STREAM key [FULL [COUNT count]]
-	"XLEN":                          PrefixSecond,          // XLEN key
-	"XPENDING":                      PrefixSecond,          // XPENDING key group [[IDLE min-idle-time] start end count [consumer]]
-	"XRANGE":                        PrefixSecond,          // XRANGE key start end [COUNT count]
-	"XREAD":                         PrefixSTREAMS,         // XREAD [COUNT count] [BLOCK milliseconds] STREAMS key [key ...] id  [id ...]
-	"XREADGROUP":                    PrefixSTREAMS,         // XREADGROUP GROUP group consumer [COUNT count] [BLOCK milliseconds]  [NOACK] STREAMS key [key ...] id [id ...]
-	"XREVRANGE":                     PrefixSecond,          // XREVRANGE key end start [COUNT count]
-	"XSETID":                        PrefixSecond,          // XSETID key last-id [ENTRIESADDED entries-added]  [MAXDELETEDID max-deleted-id]
-	"XTRIM":                         PrefixSecond,          // XTRIM key <MAXLEN | MINID> [= | ~] threshold [LIMIT count]
+	"XACK":                          PrefixNone,            // XACK key group id [id ...]
+	"XADD":                          PrefixNone,            // XADD key [NOMKSTREAM] [<MAXLEN | MINID> [= | ~] threshold  [LIMIT count]] <* | id> field value [field value ...]
+	"XAUTOCLAIM":                    PrefixNone,            // XAUTOCLAIM key group consumer min-idle-time start [COUNT count]  [JUSTID]
+	"XCLAIM":                        PrefixNone,            // XCLAIM key group consumer min-idle-time id [id ...] [IDLE ms]  [TIME unix-time-milliseconds] [RETRYCOUNT count] [FORCE] [JUSTID]  [LASTID lastid]
+	"XDEL":                          PrefixNone,            // XDEL key id [id ...]
+	"XGROUP CREATE":                 PrefixNone,            // XGROUP CREATE key group <id | $> [MKSTREAM]  [ENTRIESREAD entries-read]
+	"XGROUP CREATECONSUMER":         PrefixNone,            // XGROUP CREATECONSUMER key group consumer
+	"XGROUP DELCONSUMER":            PrefixNone,            // XGROUP DELCONSUMER key group consumer
+	"XGROUP DESTROY":                PrefixNone,            // XGROUP DESTROY key group
+	"XGROUP SETID":                  PrefixNone,            // XGROUP SETID key group <id | $> [ENTRIESREAD entries-read]
+	"XINFO CONSUMERS":               PrefixNone,            // XINFO CONSUMERS key group
+	"XINFO GROUPS":                  PrefixNone,            // XINFO GROUPS key
+	"XINFO STREAM":                  PrefixNone,            // XINFO STREAM key [FULL [COUNT count]]
+	"XLEN":                          PrefixNone,            // XLEN key
+	"XPENDING":                      PrefixNone,            // XPENDING key group [[IDLE min-idle-time] start end count [consumer]]
+	"XRANGE":                        PrefixNone,            // XRANGE key start end [COUNT count]
+	"XREAD":                         PrefixNone,            // XREAD [COUNT count] [BLOCK milliseconds] STREAMS key [key ...] id  [id ...]
+	"XREADGROUP":                    PrefixNone,            // XREADGROUP GROUP group consumer [COUNT count] [BLOCK milliseconds]  [NOACK] STREAMS key [key ...] id [id ...]
+	"XREVRANGE":                     PrefixNone,            // XREVRANGE key end start [COUNT count]
+	"XSETID":                        PrefixNone,            // XSETID key last-id [ENTRIESADDED entries-added]  [MAXDELETEDID max-deleted-id]
+	"XTRIM":                         PrefixNone,            // XTRIM key <MAXLEN | MINID> [= | ~] threshold [LIMIT count]
 	"ZADD":                          PrefixSecond,          // ZADD key [NX | XX] [GT | LT] [CH] [INCR] score member [score member  ...]
 	"ZCARD":                         PrefixSecond,          // ZCARD key
 	"ZCOUNT":                        PrefixSecond,          // ZCOUNT key min max
