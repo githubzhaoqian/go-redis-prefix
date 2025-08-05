@@ -17,6 +17,7 @@ const (
 	PrefixNumkeysSecond // Numkeys
 	PrefixNumkeysStore  // Numkeys store to other key
 	PrefixSTREAMS       // STREAMS
+	PrefixThirdNonEmpty // STREAMS
 	PrefixJoinNextArg   // next arg
 )
 
@@ -307,7 +308,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"MEMORY STATS":                  PrefixNone,            // MEMORY STATS
 	"MEMORY USAGE":                  PrefixThird,           // MEMORY USAGE key [SAMPLES count]
 	"MGET":                          PrefixAll,             // MGET key [key ...]
-	"MIGRATE":                       PrefixNone,            // MIGRATE host port <key | ""> destination-db timeout [COPY] [REPLACE]  [AUTH password | AUTH2 username password] [KEYS key [key ...]]
+	"MIGRATE":                       PrefixThirdNonEmpty,   // MIGRATE host port <key | ""> destination-db timeout [COPY] [REPLACE]  [AUTH password | AUTH2 username password] [KEYS key [key ...]]
 	"MODULE LIST":                   PrefixNone,            // MODULE LIST
 	"MODULE LOAD":                   PrefixNone,            // MODULE LOAD path [arg [arg ...]]
 	"MODULE LOADEX":                 PrefixNone,            // MODULE LOADEX path [CONFIG name value [CONFIG name value ...]]  [ARGS args [args ...]]

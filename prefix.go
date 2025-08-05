@@ -99,6 +99,14 @@ func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 			return
 		}
 		cmd.Args()[2] = k.formatKey(cmd.Args()[2].(string))
+	case PrefixThirdNonEmpty:
+		if len(cmd.Args()) < 3 {
+			return
+		}
+		if cmd.Args()[3] == "" {
+			return
+		}
+		cmd.Args()[3] = k.formatKey(cmd.Args()[3].(string))
 	case PrefixSecondAndThird:
 		if len(cmd.Args()) < 3 {
 			return

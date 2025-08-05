@@ -78,7 +78,7 @@ func TestMigrate(t *testing.T) {
 	args := cmd.Args()
 	argsSrt := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsSrt)
-	target := JoinInterfaceSliceBySpan("MIGRATE", "127.0.0.1", "6379", "MigrateKey", 0, testFormatMs())
+	target := JoinInterfaceSliceBySpan("MIGRATE", "127.0.0.1", "6379", prefixHook.formatKey("MigrateKey"), 0, testFormatMs())
 	if !strings.EqualFold(argsSrt, target) {
 		t.Fatalf("waning! %s != %s", argsSrt, target)
 	}
