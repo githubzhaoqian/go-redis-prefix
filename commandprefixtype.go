@@ -278,7 +278,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"JSON.STRLEN":                   PrefixSecond,          // JSON.STRLEN key [path]
 	"JSON.TOGGLE":                   PrefixSecond,          // JSON.TOGGLE key path
 	"JSON.TYPE":                     PrefixSecond,          // JSON.TYPE key [path]
-	"KEYS":                          PrefixAll,             // KEYS pattern
+	"KEYS":                          PrefixNone,            // KEYS pattern
 	"LASTSAVE":                      PrefixNone,            // LASTSAVE
 	"LATENCY DOCTOR":                PrefixNone,            // LATENCY DOCTOR
 	"LATENCY GRAPH":                 PrefixNone,            // LATENCY GRAPH event
