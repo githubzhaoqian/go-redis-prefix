@@ -324,7 +324,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"OBJECT REFCOUNT":               PrefixThird,           // OBJECT REFCOUNT key
 	"PERSIST":                       PrefixSecond,          // PERSIST key
 	"PEXPIRE":                       PrefixSecond,          // PEXPIRE key milliseconds [NX | XX | GT | LT]
-	"PEXPIREAT":                     PrefixNone,            // PEXPIREAT key unix-time-milliseconds [NX | XX | GT | LT]
+	"PEXPIREAT":                     PrefixSecond,          // PEXPIREAT key unix-time-milliseconds [NX | XX | GT | LT]
 	"PEXPIRETIME":                   PrefixSecond,          // PEXPIRETIME key
 	"PFADD":                         PrefixSecond,          // PFADD key [element [element ...]]
 	"PFCOUNT":                       PrefixAll,             // PFCOUNT key [key ...]
