@@ -3,3 +3,4 @@
 .vscode
 .run
 tools/output/prefix_*_test.go
+tools/output/*.md

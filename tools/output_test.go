@@ -11,6 +11,8 @@ import (
 	"testing"
 
 	"github.com/redis/go-redis/v9"
+
+	redisprefix "github.com/githubzhaoqian/go-redis-prefix"
 )
 
 var (
@@ -54,21 +56,16 @@ func TestOutput(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	// 使用反射获取 client 的方法
-	//clientValue := reflect.ValueOf(client)
 	clientType := reflect.TypeOf(client)
 
-	// 获取方法数量
 	fmt.Printf("Total methods: %d\n", clientType.NumMethod())
 
 	methodMap := make(map[string]reflect.Method)
-	// 遍历所有方法
 	for i := 0; i < clientType.NumMethod(); i++ {
 		method := clientType.Method(i)
 		methodName := strings.ToUpper(method.Name)
 		methodMap[methodName] = method
 	}
-	// 解析模板
 	tmpl, err := template.New("example").Parse(tmplStr)
 	if err != nil {
 		panic(err)
@@ -155,4 +152,41 @@ func TestOutput(t *testing.T) {
 		}
 		file.Close()
 	}
+}
+
+func TestOutputMdTable(t *testing.T) {
+	nameList := make([]string, 0, len(testCommandPrefixType))
+	for name := range testCommandPrefixType {
+		nameList = append(nameList, name)
+	}
+	sort.Slice(nameList, func(i, j int) bool {
+		return nameList[i] <= nameList[j]
+	})
+	var mdBuf bytes.Buffer
+	mdBuf.WriteString("| Command | support | explain |\n|---------|---------|----|\n")
+	for _, name := range nameList {
+		if len(name) == 0 {
+			continue
+		}
+		prefixType := redisprefix.CommandPrefixType[name]
+		td := formatMdTable(name, prefixType)
+		mdBuf.WriteString(td)
+	}
+	fileName := "output/command_table.md"
+	file, err := os.OpenFile("output/command_table.md", os.O_WRONLY|os.O_CREATE, 0644)
+	if err != nil {
+		t.Fatalf("OpenFile %s err %v", fileName, err)
+	}
+	_, err = file.Write(mdBuf.Bytes())
+	if err != nil {
+		t.Fatalf("WriteFile %s err %v", fileName, err)
+	}
+}
+
+func formatMdTable(command string, prefixType redisprefix.PrefixType) string {
+	support := "Yes"
+	if prefixType == redisprefix.PrefixNone {
+		support = "No"
+	}
+	return fmt.Sprintf("| %s | %s | |\n", command, support)
 }

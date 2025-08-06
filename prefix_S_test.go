@@ -264,7 +264,6 @@ func TestSetNX(t *testing.T) {
 	args := cmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsStr)
-	// TODO
 	target := JoinInterfaceSliceBySpan("SET", prefixHook.formatKey("SetNXKey"), 1, "ex", testFormatSec(), "nx")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
@@ -658,7 +657,6 @@ func TestSubscribe(t *testing.T) {
 	subscr := msgi.(*redis.Subscription)
 	argsStr := JoinInterfaceSliceBySpan("ssubscribe", subscr.Channel)
 	t.Log("cmd: ", argsStr)
-	// TODO
 	target := JoinInterfaceSliceBySpan("SSUBSCRIBE", "SubscribeChannel")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
