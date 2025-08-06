@@ -2,6 +2,7 @@ package redisprefix
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"testing"
 	"time"
@@ -22,6 +23,37 @@ var (
 	prefixHook  = NewKeyPrefixHook(prefix)
 	testCtx     = context.Background()
 	testTimeout = 1 * time.Second
+	lib1        = redis.Library{
+		Name:   "mylib1",
+		Engine: "LUA",
+		Functions: []redis.Function{
+			{
+				Name:        "lib1_func1",
+				Description: "This is the func-1 of lib 1",
+				Flags:       []string{"allow-oom", "allow-stale"},
+			},
+		},
+		Code: `#!lua name=%s
+					
+                     local function f1(keys, args)
+                        local hash = keys[1]  -- Get the key name
+                        local time = redis.call('TIME')[1]  -- Get the current time from the Redis server
+
+                        -- Add the current timestamp to the arguments that the user passed to the function, stored in args
+                        table.insert(args, '_updated_at')
+                        table.insert(args, time)
+
+                        -- Run HSET with the updated argument list
+                        return redis.call('HSET', hash, unpack(args))
+                     end
+
+					redis.register_function{
+						function_name='%s',
+						description ='%s',
+						callback=f1,
+						flags={'%s', '%s'}
+					}`,
+	}
 )
 
 func TestMain(m *testing.M) {
@@ -35,6 +67,17 @@ func TestMain(m *testing.M) {
 		panic(err)
 	}
 	client.AddHook(prefixHook)
+
+	lib1Code := fmt.Sprintf(lib1.Code, lib1.Name, lib1.Functions[0].Name,
+		lib1.Functions[0].Description, lib1.Functions[0].Flags[0], lib1.Functions[0].Flags[1])
+	err = client.FunctionDelete(testCtx, lib1.Name).Err()
+	if err != nil && err.Error() != "ERR Library not found" {
+		panic(err)
+	}
+	err = client.FunctionLoad(testCtx, lib1Code).Err()
+	if err != nil {
+		panic(err)
+	}
 	os.Exit(m.Run())
 }
 
