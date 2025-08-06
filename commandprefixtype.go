@@ -156,10 +156,10 @@ var CommandPrefixType = map[string]PrefixType{
 	"DISCARD":                       PrefixNone,            // DISCARD
 	"DUMP":                          PrefixSecond,          // DUMP key
 	"ECHO":                          PrefixNone,            // ECHO message
-	"EVAL":                          PrefixNone,            // EVAL script numkeys [key [key ...]] [arg [arg ...]]
-	"EVAL_RO":                       PrefixNone,            // EVAL_RO script numkeys [key [key ...]] [arg [arg ...]]
-	"EVALSHA":                       PrefixNone,            // EVALSHA sha1 numkeys [key [key ...]] [arg [arg ...]]
-	"EVALSHA_RO":                    PrefixNone,            // EVALSHA_RO sha1 numkeys [key [key ...]] [arg [arg ...]]
+	"EVAL":                          PrefixNumkeysSecond,   // EVAL script numkeys [key [key ...]] [arg [arg ...]]
+	"EVAL_RO":                       PrefixNumkeysSecond,   // EVAL_RO script numkeys [key [key ...]] [arg [arg ...]]
+	"EVALSHA":                       PrefixNumkeysSecond,   // EVALSHA sha1 numkeys [key [key ...]] [arg [arg ...]]
+	"EVALSHA_RO":                    PrefixNumkeysSecond,   // EVALSHA_RO sha1 numkeys [key [key ...]] [arg [arg ...]]
 	"EXEC":                          PrefixNone,            // EXEC
 	"EXISTS":                        PrefixAll,             // EXISTS key [key ...]
 	"EXPIRE":                        PrefixSecond,          // EXPIRE key seconds [NX | XX | GT | LT]

@@ -37,7 +37,7 @@ func TestEval(t *testing.T) {
 	args := cmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsStr)
-	target := JoinInterfaceSliceBySpan("EVAL", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
+	target := JoinInterfaceSliceBySpan("EVAL", "return {KEYS[1],ARGV[1]}", 1, prefixHook.formatKey("key"), "hello")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
@@ -59,7 +59,7 @@ func TestEvalSha(t *testing.T) {
 	args := cmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsStr)
-	target := JoinInterfaceSliceBySpan("EVALSHA", sha1, 1, "key", "hello")
+	target := JoinInterfaceSliceBySpan("EVALSHA", sha1, 1, prefixHook.formatKey("key"), "hello")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
@@ -69,15 +69,19 @@ func TestEvalSha(t *testing.T) {
 func TestEVALSHA_RO(t *testing.T) {
 	// Url: https://redis.io/docs/latest/commands/evalsha_ro/
 	// Syntax: EVALSHA_RO sha1 numkeys [key [key ...]] [arg [arg ...]]
-	cmd := client.EvalShaRO(testCtx, "return {KEYS[1],ARGV[1]}", []string{"key"}, "hello")
-	_, err := cmd.Result()
+	sha1, err := client.ScriptLoad(testCtx, "return {KEYS[1],ARGV[1]}").Result()
+	if err != nil && err != redis.Nil {
+		t.Fatalf("cmd ScriptLoad %v", err)
+	}
+	cmd := client.EvalShaRO(testCtx, sha1, []string{"key"}, "hello")
+	_, err = cmd.Result()
 	if err != nil && err != redis.Nil {
 		t.Fatalf("cmd %v", err)
 	}
 	args := cmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsStr)
-	target := JoinInterfaceSliceBySpan("EVALSHA_RO", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
+	target := JoinInterfaceSliceBySpan("EVALSHA_RO", sha1, 1, prefixHook.formatKey("key"), "hello")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
@@ -95,7 +99,7 @@ func TestEVAL_RO(t *testing.T) {
 	args := cmd.Args()
 	argsStr := JoinInterfaceSliceBySpan(args...)
 	t.Log("cmd: ", argsStr)
-	target := JoinInterfaceSliceBySpan("EVAL_RO", "return {KEYS[1],ARGV[1]}", 1, "key", "hello")
+	target := JoinInterfaceSliceBySpan("EVAL_RO", "return {KEYS[1],ARGV[1]}", 1, prefixHook.formatKey("key"), "hello")
 	if !strings.EqualFold(argsStr, target) {
 		t.Fatalf("waning! %s != %s", argsStr, target)
 	}
