@@ -1,4 +1,4 @@
-module github.com/githubzhaoqian/go-redis-prefix
+module github.com/githubzhaoqian/go-redis-prefix/v9
 
 go 1.18
 

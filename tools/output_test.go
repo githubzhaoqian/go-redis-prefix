@@ -12,7 +12,7 @@ import (
 
 	"github.com/redis/go-redis/v9"
 
-	redisprefix "github.com/githubzhaoqian/go-redis-prefix"
+	redisprefix "github.com/githubzhaoqian/go-redis-prefix/v9"
 )
 
 var (
