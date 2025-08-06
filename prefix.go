@@ -167,7 +167,7 @@ func (k *KeyPrefixHook) keyWithPrefix(cmd redis.Cmder) {
 
 // formatKey format key
 func (k *KeyPrefixHook) formatKey(key string) string {
-	return fmt.Sprintf("%s:%s", k.prefix, key)
+	return fmt.Sprintf("%s%s", k.prefix, key)
 }
 
 // FilterPrefixNone filter Prefixnone clear the memory
