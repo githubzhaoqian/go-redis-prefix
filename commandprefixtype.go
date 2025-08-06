@@ -34,6 +34,7 @@ var CommandPrefixType = map[string]PrefixType{
 	"SCRIPT":                        PrefixJoinNextArg,
 	"SLOWLOG":                       PrefixJoinNextArg,
 	"XGROUP":                        PrefixJoinNextArg,
+	"JSON.DEBUG":                    PrefixJoinNextArg,     // JSON.DEBUG
 	"ACL CAT":                       PrefixNone,            // AACL CAT [category]
 	"ACL DELUSER":                   PrefixNone,            // ACL DELUSER username [username ...]
 	"ACL DRYRUN":                    PrefixNone,            // ACL DRYRUN username command [arg [arg ...]]
@@ -261,7 +262,6 @@ var CommandPrefixType = map[string]PrefixType{
 	"JSON.ARRPOP":                   PrefixSecond,          // JSON.ARRPOP key [path [index]]
 	"JSON.ARRTRIM":                  PrefixSecond,          // JSON.ARRTRIM key path start stop
 	"JSON.CLEAR":                    PrefixSecond,          // JSON.CLEAR key [path]
-	"JSON.DEBUG":                    PrefixNone,            // JSON.DEBUG
 	"JSON.DEBUG MEMORY":             PrefixThird,           // JSON.DEBUG MEMORY key [path]
 	"JSON.DEL":                      PrefixSecond,          // JSON.DEL key [path]
 	"JSON.FORGET":                   PrefixSecond,          // JSON.FORGET key [path]
