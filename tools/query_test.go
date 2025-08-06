@@ -10,7 +10,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 
-	redisprefix "github.com/githubzhaoqian/go-redis-prefix"
+	redisprefix "github.com/githubzhaoqian/go-redis-prefix/v9"
 )
 
 const (
