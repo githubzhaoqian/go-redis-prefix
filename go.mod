@@ -2,8 +2,6 @@ module github.com/githubzhaoqian/go-redis-prefix
 
 go 1.23.0
 
-toolchain go1.24.5
-
 require (
 	github.com/PuerkitoBio/goquery v1.10.3
 	github.com/redis/go-redis/v9 v9.11.0
