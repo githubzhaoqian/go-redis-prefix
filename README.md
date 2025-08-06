@@ -1,6 +1,7 @@
 # go-redis-prefix
 go-redis-prefix is a hook library that sets the prefix for github.com/redis/go-redis/v9 key
 
+The version number corresponds to the go-redis version. If you find that the versions do not match, you can contact me to create a branch version.
 ```golang
 import (
     "github.com/redis/go-redis/v9"
