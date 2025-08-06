@@ -19,7 +19,7 @@ type commandData struct {
 
 var (
 	client      *redis.Client
-	prefix      = "go-prefix"
+	prefix      = "go-prefix:"
 	prefixHook  = NewKeyPrefixHook(prefix)
 	testCtx     = context.Background()
 	testTimeout = 1 * time.Second
