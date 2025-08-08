@@ -5,7 +5,7 @@ The version number corresponds to the go-redis version(major. minor). If you fin
 ```golang
 import (
     "github.com/redis/go-redis/v9"
-    "github.com/githubzhaoqian/go-redis-prefix"
+    "github.com/githubzhaoqian/go-redis-prefix/v9"
 )
 
 func NewRedis() *redis.Client{
